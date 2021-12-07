@@ -284,3 +284,34 @@ footer{
   padding-right: 10px;
   color: aliceblue;
 }
+
+/*Like*/
+.like{
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+}
+.like-header{
+  border-bottom: 0.1rem rgb(220, 161, 161) solid;
+}
+.like-items {
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+.like-items img {
+  width: 8rem;
+}
+.like-items li{
+  display: flex;
+}
+.like-items li div{
+  padding: 0.5rem;
+}
+.like-items li div:last-child{
+  flex: 1;
+}
+
+.right {
+  text-align: center;
+}

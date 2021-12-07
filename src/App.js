@@ -5,6 +5,7 @@ import data from "./data.json"
 import Product from "./components/Product";
 import LogIn from "./components/LogIn"
 import SignUp from "./components/SignUp"
+import Like from "./components/Like"
 
 class App extends React.Component {
     constructor() {
@@ -56,7 +57,7 @@ class App extends React.Component {
         this.setState({product: null});
         localStorage.setItem("product", JSON.stringify(null))
     }
-
+    
     removeFromLike = (product) =>{
         const userProducts = this.state.userProducts.slice();
         const logUserProducts = userProducts.find(x => x.nik === this.state.logUser.nik).products.slice();
@@ -96,7 +97,7 @@ class App extends React.Component {
           this.setState({userProducts: result})
           localStorage.setItem("userProducts", JSON.stringify(result));
         }
-    }
+      }
 
     render() {
         return (
@@ -110,6 +111,7 @@ class App extends React.Component {
                     </div>) 
                     : 
                     (<div> 
+                        <a href = "/favorites"><i class="far fa-heart"></i></a>
                         {this.state.logUser.name}
                         <button onClick = {() => {localStorage.setItem("logUser", JSON.stringify(null));}}><a href = "/">Exit</a></button>
                     </div>)}
@@ -120,6 +122,7 @@ class App extends React.Component {
                             <Routes>
                                 <Route path = "/login" element={<LogIn users = {this.state.users} logInUser = {this.logInUser}/>} />
                                 <Route path="/signup" element={<SignUp users = {this.state.users} signUpUser = {this.signUpUser}/>}/>
+                                <Route path="/favorites" element = {this.state.logUser === null? <LogIn users = {this.state.users} logInUser = {this.logInUser} /> : <Like  userProducts = {this.state.userProducts.find(x => x.nik === this.state.logUser.nik).products.slice()} removeFromLike = {this.removeFromLike} closeLike = {this.closeLike}/>}/>
                                 <Route path="/" element = {this.state.logUser === null? <Products products={this.state.products} addToLike = {this.addToLike} openProduct = {this.openProduct}/> : 
                                     <Products  userProducts = {this.state.userProducts.find(x => x.nik === this.state.logUser.nik).products.slice()} products={this.state.products} addToLike = {this.addToLike} openProduct = {this.openProduct}/>} exact/>
                                 {this.state.product === null? false:
