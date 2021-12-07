@@ -315,3 +315,22 @@ footer{
 .right {
   text-align: center;
 }
+/*Filter*/
+
+.filter{
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 0.1rem rgb(24, 10, 10) solid;
+  justify-content: space-between;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.filter div{
+  flex: 1;
+}
+
+.filter select {
+  font-size: 16px;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
