@@ -1,13 +1,155 @@
-body {
+html{
+  font-size: 63%;
+  box-sizing: border-box;
+}
+body, #root{
+  height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body, input select, button, textarea{
+  font-size: 1.6rem;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-areas: "header"
+  "main"
+  "footer";
+  grid-template-rows: 6rem 1fr 5rem;
+  grid-template-columns: 1fr;
+  height:  100%;
+}
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  color: rgb(235, 209, 14);
+}
+
+header{
+  grid-area: header;
+  background-color: rgb(10, 3, 17);
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  justify-content: space-between;
+}
+
+.search{
+  font-size: 20px;
+  padding-left: 20px;
+  margin-left: 35%;
+  padding-bottom: 10px;
+}
+
+header button{
+  padding: 6px;
+  margin-left: 10px;
+  color: aliceblue;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 0.1rem black solid;
+}
+
+header button:hover{
+  border: 0.1rem yellow solid;
+  color: yellow;
+}
+
+header a{
+  color: aliceblue;
+  text-decoration: none;
+}
+
+main{
+  grid-area: main;
+}
+
+footer{
+  grid-area: footer;
+  background-color: rgb(14, 5, 5);
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main{
+  flex: 3 60rem;
+}
+
+.sidebar{
+  flex: 1 20rem;
+}
+
+/*products*/
+
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.products li{
+  flex: 0 1 29rem;
+  height: 50rem;
+  padding: 1rem;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 0.1rem black solid;
+  height: 100%;
+}
+
+.product img{
+  width: 100%;
+  max-height: 37rem;
+}
+.product p{
+  text-align: center;
+  color: black;
+  font-family:inherit;
+  font-size: 15px;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price div{
+  text-align: center;
+  flex: 1;
+}
+
+.product-price div{
+  font-size: 2rem;
+}
+
+.product-price button{
+  border: none;
+  background-color: transparent;
+}
+
+.far.fa-heart{
+  font-size: 25px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  color: red;
 }
