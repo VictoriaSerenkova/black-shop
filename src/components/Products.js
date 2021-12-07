@@ -15,7 +15,7 @@ class Products extends Component{
                 {this.state.products.map((product) => (
                        <li key ={product._id}>
                            <div className="product">
-                               <a href={"/" + product._id}>
+                               <a href={"/" + product._id} onClick = {() => this.props.openProduct(product)}>
                                    <img src={product.image} alt={product.title} />
                                     <p>{formatTitle(product.title)}</p>
                                </a>

@@ -142,14 +142,102 @@ footer{
   font-size: 2rem;
 }
 
-.product-price button{
+.product-price button, .size-product button{
   border: none;
   background-color: transparent;
 }
 
-.far.fa-heart{
+.size-product button .far.fa-heart, .size-product button .fas.fa-heart{
+  font-size: 60px;
+}
+
+
+.far.fa-heart, .fas.fa-heart{
   font-size: 25px;
   margin-bottom: 10px;
   margin-right: 10px;
   color: red;
 }
+
+/*One product*/
+.modal-product{
+  margin-top: 2%;
+  width: 90%;
+  margin-left: 5%;
+  background-color: rgb(245, 209, 161);
+  border-radius: 20px;
+  padding-top: 1%;
+}
+.modal-product .title{
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+.image {
+  display: inline-flex;
+  padding-left: 1rem;
+}
+
+.modal-product .image img{
+  max-width: 47rem;
+  max-height: 47rem;
+  border-radius: 10px;
+}
+.image .size-product{
+  display: block;
+  margin-left: 45px;
+}
+.modal-product p{
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.modal-product .image .size-product span{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.modal-product .image .size-product ul{
+  display: inline-flex;
+  list-style-type: none;
+  margin-bottom: 70px;
+}
+
+.modal-product .image .size-product li{
+  background-color: black;
+  color: aliceblue;
+  font-size: 18px;
+  padding: 8px;
+  margin-right: 10px;
+}
+.modal-product .image .size-product button{
+  display: block;
+}
+
+.modal-product .description{
+  display: block;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 50%;
+  padding-left: 1rem;
+  padding-bottom: 1%;
+}
+.modal-product .description p{
+  text-align: center;
+}
+
+.back button{
+  margin-left: 1rem;
+  background-color: black;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: aliceblue;
+}
+
