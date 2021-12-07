@@ -1,6 +1,8 @@
 import React, {Component} from "react"
 import {formatCurrency, formatTitle} from "../util"
 import Filter from "./Filter";
+import SearchInput from "./SearchInput";
+import Search from "./Search"
 
 class Products extends Component{
     constructor(props) {
@@ -9,6 +11,11 @@ class Products extends Component{
             products : this.props.products,
             size: "",
             sort: "",
+            items:[],
+            countItemToShow: 5,
+            key:"",
+            searcheProducts : [],
+            searche: ""
         }
     }
 
@@ -41,12 +48,44 @@ class Products extends Component{
           });
         }
     };
+    
+    handleInput = (event) => {
+        const items = this.props.products.filter(x => x.title.indexOf(event.target.value) !== -1 )
+        this.setState({
+            items: items,
+            searche:event.target.value,
+            countItemToShow: items<5? items.length : 5,
+            key:""
+        })
+    }
+
+    submitSearch = (event) =>{
+        event.preventDefault();
+        const searcheProducts = this.props.products.filter(x => x.title.indexOf(event.target.value) !== -1 ).slice()
+        if(event.key === "Enter")
+        {
+          this.setState({items:[], searche:event.target.value, searcheProducts, key:"Enter"})
+        }
+    }
+    handle = (title) => {
+        console.log(title);
+          this.setState({
+              searche: title,
+              items:[],
+              key:"Enter",
+              searcheProducts: this.props.products.filter(x => x.title.indexOf(title) !== -1 ).slice()
+          })
+    }
 
     render() {
         return (
             <div>
                 <Filter count = {this.state.products.length} size = {this.state.size} sort = {this.state.sort} filterProducts= {this.filterProducts} sortProducts = {this.sortProducts} />
-                <ul className="products">
+                <input className="search" placeholder="Поиск" type="text" onKeyUp = {this.submitSearch} onChange = {this.handleInput} value = {this.state.searche}/>
+                {(this.state.items.length === 0 || this.state.searche === "")? <div></div>:
+                <SearchInput items = {this.state.items} countItemToShow = {this.state.countItemToShow} handle = {this.handle}/>}
+                {this.state.key !== "Enter" ? 
+                (<ul className="products">
                 {this.state.products.map((product) => (
                        <li key ={product._id}>
                            <div className="product">
@@ -67,7 +106,9 @@ class Products extends Component{
 
                            </div>
                        </li>))}
-                </ul>
+                </ul>)
+                :
+                <Search searche = {this.state.searche} searcheProducts = {this.state.searcheProducts} openProduct= {this.props.openProduct} userProducts = {this.props.userProducts} addToLike = {this.props.addToLike}></Search>}
             </div>
         )
     }

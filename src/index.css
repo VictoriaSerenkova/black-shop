@@ -334,3 +334,21 @@ footer{
   color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/*Search input*/
+.search-items{
+  position:absolute;
+  background-color: rgb(196, 187, 184);
+  margin-left: 33%;
+  width: 20%;
+}
+.search-items li{
+  list-style-type: none;
+  padding-bottom: 3px;
+
+}
+
+.search-items li button{
+  border: none;
+  background-color: transparent;
+}
