@@ -24,7 +24,12 @@ class Product extends Component{
                                 <li>{x}</li>
                             ))}
                         </ul>
-                        <button className="button primary" ><i class="far fa-heart"></i></button>
+                        {this.props.userProducts.find(x => x._id === this.props.product._id) ?
+                                      <button className="button primary" onClick = {() => this.props.addToLike(this.props.product)} ><i class="fas fa-heart"></i></button>
+                                      :
+                                      <button className="button primary" onClick = {() => this.props.addToLike(this.props.product)} ><i class="far fa-heart"></i></button>
+
+                            }
                     </div>
                 </div>
                 <div className="description"><p>Описание</p>{this.props.product.description}</div>

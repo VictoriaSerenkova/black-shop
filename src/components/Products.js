@@ -15,13 +15,19 @@ class Products extends Component{
                 {this.state.products.map((product) => (
                        <li key ={product._id}>
                            <div className="product">
-                               <a href={"/" + product._id}>
+                               <a href={"/" + product._id}  onClick = {() => this.props.openProduct(product)}>
                                    <img src={product.image} alt={product.title} />
                                     <p>{formatTitle(product.title)}</p>
                                </a>
-                               <div className="product-price">
+                                <div className="product-price">
                                     <div>{formatCurrency(product.price)}</div>
-                                    <button><i class="far fa-heart"></i></button>
+                                    {this.props.userProducts === undefined?
+                                    <button className="button primary" onClick = {() => this.props.addToLike(product)} ><i class="far fa-heart"></i></button>
+                                    : this.props.userProducts.find(x => x._id === product._id) ?
+                                      <button className="button primary" onClick = {() => this.props.addToLike(product)} ><i class="fas fa-heart"></i></button>
+                                      :
+                                      <button className="button primary" onClick = {() => this.props.addToLike(product)} ><i class="far fa-heart"></i></button>
+                                }
                                 </div>
 
                            </div>
